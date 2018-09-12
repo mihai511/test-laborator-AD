@@ -13,6 +13,8 @@ int main(){
     int n;
     int i;
     int x;
+    int y;
+    int aux;
     int found = 0;
     int arr[100];
 
@@ -26,7 +28,8 @@ int main(){
 
     create_min_heap_array(arr, n);
 
-    struct min_heap* root = min_heap_tree(root, arr, 0, n);
+    struct min_heap* root;
+    root = min_heap_tree(root, arr, 0, n);
 
     printf("Min heap-ul va fii:\n\n\n");
     printf("Parinte:    ");
@@ -64,5 +67,21 @@ int main(){
         printf("\nNu!\n");
     else
         printf("\nDa!\n");
+
+    printf("\n\n\nIntroduceti numarul ce doriti sa fie sters:\n");
+    scanf("%d", &y);
+
+    while(get_position_of_element(arr, n, y) != 0){
+        aux = get_position_of_element(arr, n, y);
+        pop_element_array(arr, &n, aux);
+    }
+
+    create_min_heap_array(arr, n);
+
+    printf("\n\nDupa stergerea elementului %d, min heap arata asa:\n", y);
+
+    for(i = 1; i <= n; i++){
+        printf("%d   ", arr[i]);
+    }
 }
 
