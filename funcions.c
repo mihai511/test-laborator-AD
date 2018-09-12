@@ -69,3 +69,21 @@ void search_min_heap(struct min_heap *root, int searched_value, int *found){
             search_min_heap(root->right, searched_value, found);
     }
 }
+
+int get_position_of_element(int arr[], int n, int searched_value){
+    int i;
+
+    for(i=0; i<=n; i++)
+        if(arr[i] == searched_value)
+            return i;
+
+    return 0;
+}
+
+void pop_element_array(int arr[], int *n, int i){
+    for(i=1; i<=(*n)-1; i++)
+        arr[i] = arr[i + 1];
+
+    arr[(*n)] = 0;
+    (*n)--;
+}
